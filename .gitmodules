@@ -33,9 +33,9 @@
 [submodule "src/competitor/hot/src"]
 	path = src/competitor/hot/src
 	url = https://github.com/speedskater/hot.git
-[submodule "src/competitor/desto/src"]
-	path = src/competitor/desto/src
-	url = git@github.com:WangHui025/desto.git
-[submodule "src/competitor/destool/src"]
-	path = src/competitor/destool/src
-	url = git@github.com:WangHui025/destool.git
+[submodule "src/competitor/lift/src"]
+	path = src/competitor/lift/src
+	url = git@github.com:WHIndex/lift.git
+[submodule "src/competitor/liftol/src"]
+	path = src/competitor/liftol/src
+	url = git@github.com:WHIndex/liftol.git

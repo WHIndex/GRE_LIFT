@@ -1,8 +1,8 @@
-#include"./src/src/core/desto.h"
+#include"./src/src/core/lift.h"
 #include"../indexInterface.h"
 
 template<class KEY_TYPE, class PAYLOAD_TYPE>
-class DESTOOLInterface : public indexInterface<KEY_TYPE, PAYLOAD_TYPE> {
+class LIFTOLInterface : public indexInterface<KEY_TYPE, PAYLOAD_TYPE> {
 public:
     void init(Param *param = nullptr) {}
 
@@ -19,47 +19,47 @@ public:
     size_t scan(KEY_TYPE key_low_bound, size_t key_num, std::pair <KEY_TYPE, PAYLOAD_TYPE> *result,
                 Param *param = nullptr);
 
-    long long memory_consumption() { return destool.total_size(); }
+    long long memory_consumption() { return liftol.total_size(); }
 
 private:
-    destool::LIPP <KEY_TYPE, PAYLOAD_TYPE> destool;
+    liftol::LIPP <KEY_TYPE, PAYLOAD_TYPE> liftol;
 };
 
 template<class KEY_TYPE, class PAYLOAD_TYPE>
-void DESTOOLInterface<KEY_TYPE, PAYLOAD_TYPE>::bulk_load(std::pair <KEY_TYPE, PAYLOAD_TYPE> *key_value, size_t num,
+void LIFTOLInterface<KEY_TYPE, PAYLOAD_TYPE>::bulk_load(std::pair <KEY_TYPE, PAYLOAD_TYPE> *key_value, size_t num,
                                                       Param *param) {
-    destool.bulk_load(key_value, static_cast<int>(num));
+    liftol.bulk_load(key_value, static_cast<int>(num));
 }
 
 template<class KEY_TYPE, class PAYLOAD_TYPE>
-bool DESTOOLInterface<KEY_TYPE, PAYLOAD_TYPE>::get(KEY_TYPE key, PAYLOAD_TYPE &val, Param *param) {
-    return destool.at(key, &val);
+bool LIFTOLInterface<KEY_TYPE, PAYLOAD_TYPE>::get(KEY_TYPE key, PAYLOAD_TYPE &val, Param *param) {
+    return liftol.at(key, &val);
     // return false;
 }
 
 template<class KEY_TYPE, class PAYLOAD_TYPE>
-bool DESTOOLInterface<KEY_TYPE, PAYLOAD_TYPE>::put(KEY_TYPE key, PAYLOAD_TYPE value, Param *param) {
-    destool.insert(key, value);
+bool LIFTOLInterface<KEY_TYPE, PAYLOAD_TYPE>::put(KEY_TYPE key, PAYLOAD_TYPE value, Param *param) {
+    liftol.insert(key, value);
     return true;
     // return false;
 }
 
 template<class KEY_TYPE, class PAYLOAD_TYPE>
-bool DESTOOLInterface<KEY_TYPE, PAYLOAD_TYPE>::update(KEY_TYPE key, PAYLOAD_TYPE value, Param *param) {
-    // return destool.update(key, value);
+bool LIFTOLInterface<KEY_TYPE, PAYLOAD_TYPE>::update(KEY_TYPE key, PAYLOAD_TYPE value, Param *param) {
+    // return liftol.update(key, value);
     return false;
 }
 
 template<class KEY_TYPE, class PAYLOAD_TYPE>
-bool DESTOOLInterface<KEY_TYPE, PAYLOAD_TYPE>::remove(KEY_TYPE key, Param *param) {
-    // return destool.remove(key);
+bool LIFTOLInterface<KEY_TYPE, PAYLOAD_TYPE>::remove(KEY_TYPE key, Param *param) {
+    // return liftol.remove(key);
     return false;
 }
 
 template<class KEY_TYPE, class PAYLOAD_TYPE>
-size_t DESTOOLInterface<KEY_TYPE, PAYLOAD_TYPE>::scan(KEY_TYPE key_low_bound, size_t key_num,
+size_t LIFTOLInterface<KEY_TYPE, PAYLOAD_TYPE>::scan(KEY_TYPE key_low_bound, size_t key_num,
                                                    std::pair <KEY_TYPE, PAYLOAD_TYPE> *result,
                                                    Param *param) {
-    auto scan_size = destool.range_scan_by_size(key_low_bound, static_cast<uint32_t>(key_num), result);
+    auto scan_size = liftol.range_scan_by_size(key_low_bound, static_cast<uint32_t>(key_num), result);
     return scan_size;
 }
