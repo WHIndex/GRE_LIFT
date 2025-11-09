@@ -22,7 +22,7 @@ public:
     long long memory_consumption() { return liftol.total_size(); }
 
 private:
-    liftol::LIPP <KEY_TYPE, PAYLOAD_TYPE> liftol;
+    liftol::LIFT <KEY_TYPE, PAYLOAD_TYPE> liftol;
 };
 
 template<class KEY_TYPE, class PAYLOAD_TYPE>

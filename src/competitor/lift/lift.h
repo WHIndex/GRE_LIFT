@@ -22,7 +22,7 @@ public:
     long long memory_consumption() { return lift.total_size(); }
 
 private:
-    lift::LIPP <KEY_TYPE, PAYLOAD_TYPE> lift;
+    lift::LIFT <KEY_TYPE, PAYLOAD_TYPE> lift;
 };
 
 template<class KEY_TYPE, class PAYLOAD_TYPE>
